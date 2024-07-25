@@ -1,6 +1,6 @@
 import React from 'react'
 import { getServerSession } from 'next-auth'
-import { authOptions } from "../utils/auth";
+import { authOptions } from "../../utils/auth";
 import { redirect } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 
@@ -20,7 +20,7 @@ const HomeLayout = async ({ children }: HomeLayoutProps) => {
         <div>
             <Navbar />
             <main
-                className="w-full max-w-7xl mx-auto items-center justify-between px-5 sm:px-6 py-5 lg:px-8 flex"
+                className="w-full max-w-7xl mx-auto sm:px-6 lg:px-8 "
             >
                 {children}
             </main>

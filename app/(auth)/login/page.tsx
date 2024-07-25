@@ -3,7 +3,7 @@ import GoogleButton from "@/components/GoogleButton";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../utils/auth";
+import { authOptions } from "../../../utils/auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 

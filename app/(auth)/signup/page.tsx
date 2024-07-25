@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
 import { IoLogoGithub } from "react-icons/io5";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../utils/auth";
+import { authOptions } from "../../../utils/auth";
 
 
 const Signup = async () => {

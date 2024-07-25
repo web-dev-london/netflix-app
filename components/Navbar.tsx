@@ -4,7 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import Logo from "../public/netflix_logo.svg"
 import { usePathname } from "next/navigation";
-import links from "../app/helper/helper";
+import links from "../helper/helper";
 import { Bell, Search } from "lucide-react";
 import UserNav from "./UserNav";
 
