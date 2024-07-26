@@ -10,7 +10,7 @@ export async function addToWatchList(formData: FormData) {
     const session = await getServerSession(authOptions)
     const movieId = formData.get('movieId')
     const pathName =  formData.get('pathName') as string
-    const userId = session?.user?.email as string
+    const userId = session?.user?.email as string;
     const existing = await prisma.watchList.findFirst({
         where: {
             userId,
