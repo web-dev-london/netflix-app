@@ -5,10 +5,13 @@ import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import EmailProvider from "next-auth/providers/email";
 
+
+
 export const authOptions = {
 
     // @ts-expect-error
     adapter: PrismaAdapter(prisma),
+
     providers: [
         GitHubProvider({
             clientId: process.env.GITHUB_ID as string,
@@ -30,5 +33,14 @@ export const authOptions = {
             from: process.env.EMAIL_FROM,
         }),
     ],
-    secret: process.env.SECRET 
+    callbacks: {
+        session: async ({ session, user }) => {
+            if (session.user) {
+                session.user.id = user.id
+            }
+            return session
+        }
+    },
+    secret: process.env.SECRET
 } satisfies NextAuthOptions;
+

@@ -49,15 +49,4 @@ const MovieButtons = (props: {
     );
 }
 
-/* 
-       youtubeUrl={youtubeUrl}
-                title={title}
-                state={open}
-                overview={overview}
-                age={age}
-                duration={time}
-                release={year}
-                changeState={setOpen}
- */
-
 export default MovieButtons;

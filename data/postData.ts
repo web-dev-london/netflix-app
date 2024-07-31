@@ -164,4 +164,4 @@ async function postData() {
     });
 }
 
-export default postData
+export default postData;

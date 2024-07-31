@@ -7,10 +7,15 @@ import { usePathname } from "next/navigation";
 import links from "../helper/helper";
 import { Bell, Search } from "lucide-react";
 import UserNav from "./UserNav";
+import { Session } from "next-auth";
+import { useState } from "react";
 
 
-const Navbar = () => {
+const Navbar = (props: {
+    session: Session
+}) => {
     const pathName = usePathname()
+    const [isOpen, setIsOpen] = useState(false);
 
     const navLinks = links.map((link, i) => (
         <div key={i}>
@@ -57,9 +62,29 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="flex items-center gap-x-8">
-                    <Search className="w-5 h-5 text-white/60 cursor-pointer hover:text-white transition-all" />
+                    <form
+                        className="relative"
+                    >
+                        {isOpen ? (
+                            <input
+                                className="bg-[#2c2c2c] text-white w-[250px] rounded-lg py-[0.40rem] px-4 outline-none
+                                placeholder:text-white/60"
+                                type="text"
+                                placeholder="Search"
+                            />
+                        ) : null}
+
+                        <Search
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="w-5 h-5 text-white/60 cursor-pointer hover:text-white
+                            absolute top-1/2 right-3 -translate-y-1/2
+                            "
+                        />
+                    </form>
                     <Bell className="w-5 h-5 text-white/60 cursor-pointer hover:text-white transition-all" />
-                    <UserNav />
+                    <UserNav
+                        session={props.session}
+                    />
                 </div>
             </div>
         </>

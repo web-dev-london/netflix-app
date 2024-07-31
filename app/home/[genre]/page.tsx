@@ -91,7 +91,10 @@ interface CategoryViewProps {
 const CategoryView = async (params: CategoryViewProps) => {
     // @ts-expect-error
     const session = await getServerSession(authOptions)
-    const data = await getData(params.params.genre, session?.user?.email as string)
+    if (!session) {
+        throw new Error('Invalid session')
+    }
+    const data = await getData(params.params.genre, session.user.id)
     return (
         <>
             <div

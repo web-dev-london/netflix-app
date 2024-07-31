@@ -35,7 +35,12 @@ async function getData(userId: string) {
 const RecentlyAdded = async () => {
     // @ts-expect-error
     const session = await getServerSession(authOptions);
-    const data = await getData(session?.user?.email as string);
+
+    if (!session) {
+        throw new Error('Invalid session')
+    }
+
+    const data = await getData(session.user.id);
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-8 gap-6">

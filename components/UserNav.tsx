@@ -4,9 +4,10 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { Button } from './ui/button'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { signOut } from 'next-auth/react'
+import { Session } from 'next-auth'
 
 
-const UserNav = () => {
+const UserNav = (props: { session: Session }) => {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -23,12 +24,12 @@ const UserNav = () => {
                         <p
                             className='text-sm font-semibold leading-none'
                         >
-                            John Doe
+                            {props.session.user.name}
                         </p>
                         <p
                             className='text-sm text-muted-foreground '
                         >
-                            @johndoe
+                            {props.session.user.email}
                         </p>
                     </div>
                 </DropdownMenuLabel>
